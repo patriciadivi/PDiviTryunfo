@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Title from './Title';
+import '../styles/SectionForm.css';
 
 class Form extends React.Component {
   render() {
@@ -20,9 +21,9 @@ class Form extends React.Component {
     } = this.props;
 
     return (
-      <section>
+      <section className="SectionForm">
         <div>
-          <Title titleContainer="Card de Cartas" />
+          <Title titleContainer="Adicionar nova carta" />
         </div>
         <form>
 
@@ -117,6 +118,7 @@ class Form extends React.Component {
             <input
               id="check"
               name="check"
+              className="checkbox"
               type="checkbox"
               data-testid="trunfo-input"
               checked={ cardTrunfo }

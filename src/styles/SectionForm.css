@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.SectionForm {
+  border: 1px solid #059862;
+  box-shadow: 3px 4px 10px 0.5px;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem auto;
+  max-width: 400px;
+}
+
+.SectionForm div {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.SectionForm div h1 {
+  color: #059862;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+.SectionForm form {
+  align-content: center;
+  margin: 0.8rem auto;
+  max-width: 300px;
+}
+
+.SectionForm form label {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.SectionForm form label input {
+  background-color: white;
+  border: 1px solid rgb(145, 142, 142);
+  border-radius: 0.2rem;
+  box-shadow: 2px 2px 6px 0.5px;
+  color: hsl(210deg 8% 25%);
+  cursor: pointer;
+  margin: 0 0 0 0.2rem;
+  padding: 0.2rem;
+}
+
+.SectionForm form label textarea {
+  border: 1px solid rgb(145, 142, 142);
+  border-radius: 0.2rem;
+  color: hsl(210deg 8% 25%);
+  cursor: pointer;
+  height: 80px;
+  margin: 0 0 0 0.5rem;
+  width: 180px;
+}
+
+.SectionForm form label select {
+  background-color: white;
+  border: 1px solid rgb(145, 142, 142);
+  border-radius: 0.2rem;
+  color: #059862;
+  cursor: pointer;
+  margin: 0 0 0 0.2rem;
+  padding: 0.2rem;
+  text-transform: uppercase;
+}
+
+.SectionForm form select option {
+  background-color: #059862;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 6px 0.5px;
+  color: white;
+  cursor: pointer;
+}
+
+.SectionForm .checkbox {
+  align-self: center;
+  color: black;
+  height: 1.1rem;
+  margin-right: 0.5rem;
+  text-decoration: none;
+  width: 1.1rem;
+}
+
+.SectionForm input:checked {
+  background-color: #059862;
+}
+
+.SectionForm button {
+  background-color: #059862;
+  border-color: #059862;
+  border-radius: 0.2rem;
+  color: white;
+  font-size: 1.2rem;
+  margin: 0.8rem auto;
+  padding: 0.5rem;
+  width: 100px;
+}
