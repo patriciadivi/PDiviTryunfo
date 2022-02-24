@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.SectionCard h1 {
+  font-size: 1.4rem;
+  padding: 0.8rem;
+  text-align: center;
+  text-transform: uppercase;
+}
