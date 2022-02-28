@@ -18,19 +18,27 @@ class Card extends React.Component {
 
     return (
       <section className="SectionCard">
-        <Title titleContainer="Adicionar uma novo Card" />
-        <section>
-          <p data-testid="name-card">{ cardName }</p>
+        <Title titleContainer="Prévia do Card" />
+        <section className="card">
+          <h2 data-testid="name-card">{ cardName }</h2>
           <img
             src={ cardImage }
-            alt={ cardName }
+            alt={ `Imagem do carta ${cardName} escolhida por você` }
             data-testid="image-card"
           />
-          <p data-testid="description-card">{ cardDescription }</p>
-          <p data-testid="attr1-card">{ cardAttr1 }</p>
-          <p data-testid="attr2-card">{ cardAttr2 }</p>
-          <p data-testid="attr3-card">{ cardAttr3 }</p>
-          <p data-testid="rare-card">{ cardRare }</p>
+          <h5 data-testid="description-card">{ cardDescription }</h5>
+          <div>
+            <p data-testid="attr1-card">
+              {`Attr01................................................. ${cardAttr1}`}
+            </p>
+            <p data-testid="attr2-card">
+              {`Attr02................................................. ${cardAttr2}`}
+            </p>
+            <p data-testid="attr3-card">
+              {`Attr03................................................. ${cardAttr3}`}
+            </p>
+            <p data-testid="rare-card">{ cardRare }</p>
+          </div>
           {(cardTrunfo) ? <p data-testid="trunfo-card">Super Trunfo</p> : ''}
         </section>
       </section>
