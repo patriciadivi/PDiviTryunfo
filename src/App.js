@@ -31,11 +31,12 @@ class App extends React.Component {
     }, this.validFrom);
   }
 
-  // onSaveButtonClick = () => {
-  //   this.setState({
-  //     isSaveButtonDisabled: true,
-  //   });
-  // }
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    this.setState({
+      isSaveButtonDisabled: true,
+    });
+  }
 
   saveButtom = (event) => {
     event.preventDefault();
