@@ -150,7 +150,8 @@ class App extends React.Component {
             cardAttr3={ cardAttr3 }
             cardImage={ cardImage }
             cardRare={ cardRare }
-            cardTrunfo={ hasTrunfo }
+            cardTrunfo={ cardTrunfo }
+            // cardTrunfo={ hasTrunfo }
           />
         </main>
       </>
