@@ -69,9 +69,9 @@ class App extends React.Component {
       cardName: '',
       cardDescription: '',
       cardImage: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardRare: 'normal',
       cardTrunfo: false,
       trunfoHas: false,
@@ -120,6 +120,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      data,
     } } = this;
 
     return (
@@ -153,6 +154,20 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
             // cardTrunfo={ hasTrunfo }
           />
+          { data.map((eleCard) => (
+            <section key={ eleCard.cardName }>
+              <Card
+                cardName={ eleCard.cardName }
+                cardDescription={ eleCard.cardDescription }
+                cardAttr1={ eleCard.cardAttr1 }
+                cardAttr2={ eleCard.cardAttr2 }
+                cardAttr3={ eleCard.cardAttr3 }
+                cardImage={ eleCard.cardImage }
+                cardRare={ eleCard.cardRare }
+                cardTrunfo={ eleCard.cardTrunfo }
+              />
+            </section>
+          ))}
         </main>
       </>
     );
