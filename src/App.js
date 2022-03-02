@@ -1,7 +1,6 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
-import react from 'react';
 
 class App extends React.Component {
   constructor(props) {
@@ -110,19 +109,15 @@ class App extends React.Component {
   };
 
   deleteCard = ({ target }) => {
-    const { data } = this.state;
+    const { hasTrunfo, data } = this.state;
     const cardFind = data.find((eleName) => target.id === eleName.cardName);
     console.log(cardFind);
     const checkShow = cardFind.cardTrunfo;
     console.log(checkShow);
-    if (checkShow) {
-      this.setState({ hasTrunfo: false });
-    }
-    if (target.id === cardFind.cardName) {
-      this.setState({
-        data: data.filter((eleName) => eleName.cardName !== cardFind.cardName),
-      });
-    }
+    this.setState({
+      hasTrunfo: checkShow ? false : hasTrunfo,
+      data: data.filter((eleName) => eleName.cardName !== cardFind.cardName),
+    });
   }
 
   render() {
