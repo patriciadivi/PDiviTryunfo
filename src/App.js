@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Search from './components/Search';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,11 +19,15 @@ class App extends React.Component {
       trunfoHas: false,
       isSaveButtonDisabled: true,
       data: [],
+      previewSearch: '',
+      search: '',
+      // searchRare: 'todos',
+      // searchTryunfo: false,
     };
     this.onInputChange = this.onInputChange.bind(this);
   }
 
-  onInputChange({ target }) {
+  onInputChange = ({ target }) => {
     console.log(this);
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
@@ -106,7 +111,7 @@ class App extends React.Component {
     } else {
       this.setState({ isSaveButtonDisabled: true });
     }
-  };
+  }
 
   deleteCard = ({ target }) => {
     const { hasTrunfo, data } = this.state;
@@ -118,6 +123,20 @@ class App extends React.Component {
       hasTrunfo: checkShow ? false : hasTrunfo,
       data: data.filter((eleName) => eleName.cardName !== cardFind.cardName),
     });
+  }
+
+  onInputSearchChange = ({ target: { type, name, value, checked } }) => {
+    this.setState({
+      [name]: (type === 'checkbox' ? checked : value),
+    });
+  }
+
+  onSearchButtonClick = (event) => {
+    event.preventDefault();
+    // const { previewSearch } = this.state;
+    // this.setState({
+    //   search: previewSearch,
+    // });
   }
 
   render() {
@@ -133,6 +152,8 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       data,
+      previewSearch,
+      search,
     } } = this;
 
     return (
@@ -141,6 +162,12 @@ class App extends React.Component {
           <h1>Tryunfo</h1>
         </header>
         <main>
+          <Search
+            previewSearch={ previewSearch }
+            search={ search }
+            onInputSearchChange={ this.onInputSearchChange }
+            onSearchButtonClick={ this.onSearchButtonClick }
+          />
           <Form
             cardName={ cardName }
             cardDescription={ cardDescription }
@@ -166,7 +193,9 @@ class App extends React.Component {
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
           />
-          { data.map((eleCard) => (
+          { data.filter(
+            (card) => (card.cardName.includes(search)),
+          ).map((eleCard) => (
             <section className="SectionCard" key={ eleCard.cardName }>
               <Card
                 titulo=" Card Carta"
