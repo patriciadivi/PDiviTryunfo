@@ -14,11 +14,13 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      titulo,
+
     } = this.props;
 
     return (
       <section className="SectionCard">
-        <Title titleContainer="Prévia do Card" />
+        <Title titleContainer={ titulo } />
         <section className="card">
           <h2 data-testid="name-card">{ cardName }</h2>
           <img
@@ -54,6 +56,7 @@ Card.propTypes = {
   cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
+  titulo: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
 };
 

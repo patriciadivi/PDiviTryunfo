@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import react from 'react';
 
 class App extends React.Component {
   constructor(props) {
@@ -110,7 +111,7 @@ class App extends React.Component {
 
   deleteCard = ({ target }) => {
     const { data } = this.state;
-    const cardFind = data.find((eleName) => eleName.cardName);
+    const cardFind = data.find((eleName) => target.id === eleName.cardName);
     console.log(cardFind);
     const checkShow = cardFind.cardTrunfo;
     console.log(checkShow);
@@ -160,6 +161,7 @@ class App extends React.Component {
             onSaveButtonClick={ this.saveButtom }
           />
           <Card
+            titulo="Prévia do Card"
             cardName={ cardName }
             cardDescription={ cardDescription }
             cardAttr1={ cardAttr1 }
@@ -168,11 +170,11 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
-            // cardTrunfo={ hasTrunfo }
           />
           { data.map((eleCard) => (
             <section className="SectionCard" key={ eleCard.cardName }>
               <Card
+                titulo=" Card Carta"
                 cardName={ eleCard.cardName }
                 cardDescription={ eleCard.cardDescription }
                 cardAttr1={ eleCard.cardAttr1 }
