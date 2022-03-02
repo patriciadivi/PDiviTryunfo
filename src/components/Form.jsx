@@ -44,11 +44,11 @@ class Form extends React.Component {
             />
           </label>
 
-          <label htmlFor="descricao">
+          <label htmlFor="cardDescription">
             Descrição:
             <textarea
               name="cardDescription"
-              id=""
+              id="cardDescription"
               value={ cardDescription }
               onChange={ onInputChange }
               data-testid="description-input"
@@ -166,6 +166,7 @@ Form.propTypes = {
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
+
 };
 
 export default Form;

@@ -108,6 +108,22 @@ class App extends React.Component {
     }
   };
 
+  deleteCard = ({ target }) => {
+    const { data } = this.state;
+    const cardFind = data.find((eleName) => eleName.cardName);
+    console.log(cardFind);
+    const checkShow = cardFind.cardTrunfo;
+    console.log(checkShow);
+    if (checkShow) {
+      this.setState({ hasTrunfo: false });
+    }
+    if (target.id === cardFind.cardName) {
+      this.setState({
+        data: data.filter((eleName) => eleName.cardName !== cardFind.cardName),
+      });
+    }
+  }
+
   render() {
     const { state: {
       cardName,
@@ -155,7 +171,7 @@ class App extends React.Component {
             // cardTrunfo={ hasTrunfo }
           />
           { data.map((eleCard) => (
-            <section key={ eleCard.cardName }>
+            <section className="SectionCard" key={ eleCard.cardName }>
               <Card
                 cardName={ eleCard.cardName }
                 cardDescription={ eleCard.cardDescription }
@@ -166,6 +182,14 @@ class App extends React.Component {
                 cardRare={ eleCard.cardRare }
                 cardTrunfo={ eleCard.cardTrunfo }
               />
+              <button
+                id={ eleCard.cardName }
+                type="button"
+                onClick={ this.deleteCard }
+                data-testid="delete-button"
+              >
+                Excluir
+              </button>
             </section>
           ))}
         </main>
