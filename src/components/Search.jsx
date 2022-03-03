@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 class Search extends React.Component {
   render() {
     const {
-      search, onInputSearchChange, onSearchButtonClick, searchRare } = this.props;
+      search, onInputSearchChange, onSearchButtonClick,
+      searchRare, searchTryunfo } = this.props;
     return (
       <section>
         <h2>Filtro de Busca</h2>
@@ -19,6 +20,7 @@ class Search extends React.Component {
               data-testid="name-filter"
             />
           </label>
+
           <label htmlFor="searchRare">
             <select
               id="searchRare"
@@ -33,6 +35,18 @@ class Search extends React.Component {
               <option value="muito raro">muito raro</option>
             </select>
           </label>
+
+          <label htmlFor="searchTryunfo">
+            <input
+              type="checkbox"
+              id="searchName"
+              name="searchTryunfo"
+              value={ searchTryunfo }
+              onChange={ onInputSearchChange }
+              data-testid="trunfo-filter"
+            />
+          </label>
+
           <button type="submit" onClick={ onSearchButtonClick }>Buscar</button>
         </form>
       </section>

@@ -22,13 +22,12 @@ class App extends React.Component {
       previewSearch: '',
       search: '',
       searchRare: 'todas',
-      // searchTryunfo: false,
+      searchTryunfo: false,
     };
     this.onInputChange = this.onInputChange.bind(this);
   }
 
   onInputChange = ({ target }) => {
-    console.log(this);
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
     this.setState({
@@ -155,6 +154,7 @@ class App extends React.Component {
       previewSearch,
       search,
       searchRare,
+      searchTryunfo,
     } } = this;
 
     return (
@@ -185,20 +185,24 @@ class App extends React.Component {
           />
           <Card
             titulo="Prévia do Card"
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
+            // cardName={ cardName }
+            // cardDescription={ cardDescription }
+            // cardAttr1={ cardAttr1 }
+            // cardAttr2={ cardAttr2 }
+            // cardAttr3={ cardAttr3 }
+            // cardImage={ cardImage }
+            // cardRare={ cardRare }
+            // cardTrunfo={ cardTrunfo }
+            { ...this.state }
           />
           { data.filter(
             (card) => (card.cardName.toLowerCase().includes(search.toLowerCase())),
-          )
-            .filter((card) => (searchRare === 'todas'
-              ? card.cardRare.includes('') : card.cardRare === searchRare))
+          ).filter((card) => (searchRare === 'todas'
+            ? card.cardRare.includes('')
+            : card.cardRare === searchRare))
+            .filter((card) => (searchTryunfo
+              ? card.cardTrunfo
+              : true))
             .map((eleCard) => (
               <section className="SectionCard" key={ eleCard.cardName }>
                 <Card
