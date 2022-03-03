@@ -21,7 +21,7 @@ class App extends React.Component {
       data: [],
       previewSearch: '',
       search: '',
-      // searchRare: 'todos',
+      searchRare: 'todas',
       // searchTryunfo: false,
     };
     this.onInputChange = this.onInputChange.bind(this);
@@ -154,6 +154,7 @@ class App extends React.Component {
       data,
       previewSearch,
       search,
+      searchRare,
     } } = this;
 
     return (
@@ -194,30 +195,33 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
           { data.filter(
-            (card) => (card.cardName.includes(search)),
-          ).map((eleCard) => (
-            <section className="SectionCard" key={ eleCard.cardName }>
-              <Card
-                titulo=" Card Carta"
-                cardName={ eleCard.cardName }
-                cardDescription={ eleCard.cardDescription }
-                cardAttr1={ eleCard.cardAttr1 }
-                cardAttr2={ eleCard.cardAttr2 }
-                cardAttr3={ eleCard.cardAttr3 }
-                cardImage={ eleCard.cardImage }
-                cardRare={ eleCard.cardRare }
-                cardTrunfo={ eleCard.cardTrunfo }
-              />
-              <button
-                id={ eleCard.cardName }
-                type="button"
-                onClick={ this.deleteCard }
-                data-testid="delete-button"
-              >
-                Excluir
-              </button>
-            </section>
-          ))}
+            (card) => (card.cardName.toLowerCase().includes(search.toLowerCase())),
+          )
+            .filter((card) => (searchRare === 'todas'
+              ? card.cardRare.includes('') : card.cardRare === searchRare))
+            .map((eleCard) => (
+              <section className="SectionCard" key={ eleCard.cardName }>
+                <Card
+                  titulo=" Card Carta"
+                  cardName={ eleCard.cardName }
+                  cardDescription={ eleCard.cardDescription }
+                  cardAttr1={ eleCard.cardAttr1 }
+                  cardAttr2={ eleCard.cardAttr2 }
+                  cardAttr3={ eleCard.cardAttr3 }
+                  cardImage={ eleCard.cardImage }
+                  cardRare={ eleCard.cardRare }
+                  cardTrunfo={ eleCard.cardTrunfo }
+                />
+                <button
+                  id={ eleCard.cardName }
+                  type="button"
+                  onClick={ this.deleteCard }
+                  data-testid="delete-button"
+                >
+                  Excluir
+                </button>
+              </section>
+            ))}
         </main>
       </>
     );

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class Search extends React.Component {
   render() {
     const {
-      search, onInputSearchChange, onSearchButtonClick } = this.props;
+      search, onInputSearchChange, onSearchButtonClick, searchRare } = this.props;
     return (
       <section>
         <h2>Filtro de Busca</h2>
@@ -18,6 +18,20 @@ class Search extends React.Component {
               onChange={ onInputSearchChange }
               data-testid="name-filter"
             />
+          </label>
+          <label htmlFor="searchRare">
+            <select
+              id="searchRare"
+              name="searchRare"
+              value={ searchRare }
+              onChange={ onInputSearchChange }
+              data-testid="rare-filter"
+            >
+              <option value="todas">todas</option>
+              <option value="normal">normal</option>
+              <option value="raro">raro</option>
+              <option value="muito raro">muito raro</option>
+            </select>
           </label>
           <button type="submit" onClick={ onSearchButtonClick }>Buscar</button>
         </form>
